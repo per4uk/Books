@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #E9E9E9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#background-page {
+    margin: 20px auto;
+    padding: 30px 60px 30px 71px;
+    width: 829px;
+    height: 1000px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 3px 0 #d0d0d0;
+}
+
+ul.top-menu {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid #000000;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    user-select: none;
+}
+
+ul.top-menu li {
+    font-size: 14px;
+    white-space: nowrap;
+    color: #000000;
+    float: left;
+    padding: 0px 20px;
+    text-align: center;
+    height: 23px;
+    line-height: 23px;
+    cursor: pointer;
+}
+
+ul.top-menu li.active {
+    border-right: 2px solid #000000; 
+    border-left: 2px solid #000000;
+    background-color: #E6E6E6;
+}
+
+ul.top-menu li:first-child {
+    border-left: none;
+}
+
+ul.top-menu li:hover {
+    background-color: #E9E9E9;
+}
+
+div.search-container {
+    width: 194px;
+    height: 18px;
+    margin-top: 35px;
+    margin-left: 570px;
+}
+
+div.search-container .icon{
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 3px;
+    z-index: 1;
+    color: #000000;
+    font-size: 14px;
+}
+
+input.search {
+    border: 2px solid #000000;
+    border-radius: 9px;
+    width: 194px;
+    height: 22px;
+    text-align: left;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    padding-left: 15px;
+    padding-right: 3px;
+    outline: none;
+}
+
+div.books-page h1.page-title {
+    font-size: 26px;
+    margin-top: 8px;
+    padding-left: 25px;
+    font-weight: normal;
+}
+
+div.table-container {
+    width: 700px;
+    margin-top: 35px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+}
+
+table#booklist {
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000000;
+}
+
+table#booklist th {
+    height: 40px;
+    background-color: #CCCCCC;
+}
+
+table#booklist td {
+    height: 40px;
+}
+
+table#booklist tr.active {
+    background-color: #EEEEEE;
+}
+
+table#booklist td, table#booklist th {
+    vertical-align: middle;
+    padding: 5px;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 1);
+}
+
+table#booklist, table#booklist td, table#booklist th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table#booklist div.rating {
+    text-align: center;
+    color: #CCCCCC;
+    font-size: 18px;
+    cursor: default;
+}
+
+.black {
+    color:#000000;
+}
+
+table#booklist div.onoffswitch {
+    position: relative;
+    width: 65px;
+    margin: auto;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+table#booklist input.onoffswitch-checkbox {
+    display: none;
+}
+
+table#booklist label.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #888888; border-radius: 20px;
+}
+
+table#booklist div.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+table#booklist div.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 22px; padding: 0; line-height: 22px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+
+table#booklist div.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+table#booklist div.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #ECECEC;
+    color: #000000;
+    text-align: right;
+}
+
+table#booklist span.onoffswitch-switch {
+    display: block; width: 22px; margin: 0px;
+    background: #CCCCCC;
+    position: absolute; top: 0; bottom: 0;
+    right: 39px;
+    border: 2px solid #888888; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+
+table#booklist input.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+table#booklist input.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    border-color: #000000;
+}
+
+table#booklist input.onoffswitch-checkbox:checked + .onoffswitch-label {
+    border-color: #000000;
+}
+
+table#booklist div.buttons {
+    margin: auto;
+    width: 102px;
+}
+
+table#booklist div.buttons div {
+    height: 21px;
+    line-height: 21px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    float: left;
+    margin: 0 3px;
+}
+
+table#booklist div.edit-btn {
+    background-color: rgb(117, 169, 249);
+    width: 39px;
+}
+
+table#booklist div.delete-btn {
+    background-color: rgb(255, 138, 132);
+    width: 43px;
+}
+
+div.pagination-container {
+    width: 700px;
+}
+
+ul.pagination {
+    display: inline-block;
+    list-style-type: none;
+    margin: 35px auto;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid #000000;
+    border-radius: 11px;
+}
+
+ul.pagination li {
+    display: inline;
+    height: 26px;
+    width: 64px;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 23px;
+    cursor: pointer;
+    border-left: 2px solid #000000;
+}
+
+ul.pagination li.active {
+    background-color: #ECECEC;
+}
+
+ul.pagination li:first-child {
+    border-left: none;
+}
+
+div.article {
+    width: 700px;
+    margin-top: 50px;
+    display: none;
+}
+
+div.article div.image-container {
+    width: 215px;
+    height: 215px;
+    float: left;
+    margin: 15px 40px;
+}
+
+div.article img.image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+div.article div.description-container {
+    float: left;
+    width: 405px;
+    margin-bottom: 35px;
+}
+
+div.article h1.book-title {
+    font-size: 26px;
+    font-weight: normal;
+}
+
+div.article div.rating {
+    /*float:left;*/
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+    color: #CCCCCC;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+div.article div.rating:not(:checked) > input {
+    position: absolute;
+    opacity: 0;
+    clip: rect(0,0,0,0);
+}
+
+div.article div.rating:not(:checked) > label {
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #CCCCCC;
+    margin-left: -6px;
+}
+
+div.article div.rating:not(:checked) > label:before {
+    content: '★';
+}
+
+div.article div.rating > input:checked + label:hover,
+div.article div.rating > input:checked + label:hover ~ label,
+div.article div.rating > input:checked ~ label:hover,
+div.article div.rating > input:checked ~ label:hover ~ label,
+div.article div.rating > label:hover ~ input:checked ~ label {
+    color: #AAAAAA;
+}
+div.article div.rating > input:checked ~ label {
+    color: #000000;
+}
+
+div.article div.rating:not(:checked) > label:hover,
+div.article div.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+div.article div.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+/*div.article div.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+div.article div.rating > span {
+  display: inline-block;
+  position: relative;
+}
+
+div.article div.rating > span:hover:before,
+div.article div.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: #000000;
+}
+*/
+div.article p.date {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+div.article p.description {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+div.article div.dlbutton-container {
+    width: 100%;
+    height: 25px;
+    clear: both;
+    margin-top: 10px;
+}
+
+div.article div.download {
+    width: 110px;
+    height: 21px;
+    line-height: 21px;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #000000;
+    border-radius: 6px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #ECECEC;
+    cursor: pointer;
+}
+
+div.article div.download a {
+    color: #000000;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+div.add-page, div.edit-page  {
+    display: none;
+}
+
+div.ae-page h1.page-title {
+    font-size: 26px;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+div.ae-page div.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+div.ae-page div.fileUpload span {
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 14px;
+} 
+
+div.ae-page input.file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    opacity: 0;
+    -webkit-filter: opacity(0);
+    filter: opacity(0);
+}
+
+div.ae-page input.author {
+    height: 17px;
+    width: 441px;
+    font-size: 14px;
+    padding: 2px 5px;
+    border: 2px solid #000000;
+    outline: none;
+}
+
+div.ae-page input.title {
+    height: 17px;
+    width: 441px;
+    font-size: 14px;
+    padding: 2px 5px;
+    border: 2px solid #000000;
+    margin-top: 10px;
+    outline: none;
+}
+
+div.ae-page textarea.description {
+    width: 441px;
+    height: 159px;
+    margin-top: 20px;
+    border: 2px solid #000000;
+    padding: 2px 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+div.ae-page div.status {
+    position: relative;
+    width: 186px;
+    margin: 30px 0;
+    padding: 2px 5px;
+    border-radius: 6px;
+    border: 2px solid #000000;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    color: #000000;
+}
+
+div.ae-page div.status:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    margin-top: -4px;
+    border-width: 8px 5px 0px 5px;
+    border-style: solid;
+    border-color: #000000 transparent;
+}
+
+div.ae-page div.status span.background {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #E6E6E6;
+    width: 23px;
+    height: 20px;
+    border-left: 2px solid #000000;
+    overflow: hidden;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.ae-page div.status .dropdown {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    right: 0;
+    border: 2px solid #000000;
+    border-radius: inherit;
+    font-weight: normal;
+    transition: all 0.5s ease-in;
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+div.ae-page div.status.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+div.ae-page div.status .dropdown li a {
+    display: block;
+    padding: 2px 5px;
+    text-decoration: none;
+    color: #000000;
+    border-bottom: 2px solid #000000;
+    transition: all 0.3s ease-out;
+}
+
+div.ae-page div.status .dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+
+div.ae-page div.status .dropdown li:last-of-type a {
+    border-radius: 0 0 7px 7px;
+    border: none;
+}
+
+div.ae-page div.status .dropdown li:hover a {
+    background-color: #E6E6E6;
+}
+
+div.ae-page div.button {
+    width: 106px;
+    height: 21px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+    margin: 10px;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    cursor: pointer;
+}
+
+div.ae-page div.cancel {
+    margin-left: 215px;
+}
