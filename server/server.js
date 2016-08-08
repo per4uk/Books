@@ -16,20 +16,28 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 
 //
 
-app.listen( PORT );
+app.get( '/download/:book_id', books.downloadBook );
 
 //
 
-app.get( '/books', books.getAllBooks );
+var router = express.Router(); 
 
-app.post( '/addbook', books.addBook );
+//
 
-app.get( '/download/:book', books.downloadBook );
+router.route( '/books' )
+    .post( books.addBook )
+    .get( books.getAllBooks );
 
-app.post( '/editbook', books.editBook );
+router.route( '/books/:book_id' )
+    .put( books.editBook )
+    .delete( books.deleteBook )
+    .get( books.getBook );
 
-app.post( '/deletebook', books.deleteBook );
+//
 
+app.use( '/api', router );
 
+//
 
+app.listen( PORT );
 console.log( '> Started server on port ' + PORT );

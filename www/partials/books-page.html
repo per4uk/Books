@@ -1,0 +1,71 @@
+<div class="books-page">
+    <div class="search-container">
+        <span class="icon"><i class="fa fa-search"></i></span>
+        <input type="search" class="search" placeholder="Search">
+    </div>
+    <h1 class="page-title">Books</h1>
+    <div class="table-container">
+        <table id="booklist">
+            <thead>
+                <tr>
+                    <th width="9%">№</th>
+                    <th width="20%">Author</th>
+                    <th width="20%">Title</th>
+                    <th width="19%">Book Rating</th>
+                    <th width="15%">Status</th>
+                    <th width="17%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class="{ active:book == activeBook }" ng-click="setActiveBook()" ng-repeat="book in books.slice( ( currentPage - 1 ) * itemsPerPage, currentPage * itemsPerPage )">
+                    <td><div class="number">{{ ( currentPage - 1 ) * itemsPerPage + $index + 1 }}</div></td>
+                    <td><div class="author">{{ book.author }}</div></td>
+                    <td><div class="title">{{ book.title }}</div></td>
+                    <td>
+                        <div class="rating" rating="{{ book.rating }}">
+                            <span class="black">★</span><span ng-class="book.rating >= 2 ? 'black' : '' ">★</span><span ng-class="book.rating >= 3 ? 'black' : '' ">★</span><span ng-class="book.rating >= 4 ? 'black' : '' ">★</span><span ng-class="book.rating >= 5 ? 'black' : '' ">★</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch{{ $index+1 }}" ng-model="book.status" ng-change="updateBook( 'status' )">
+                            <label class="onoffswitch-label" for="myonoffswitch{{ $index+1 }}">
+                                <div class="onoffswitch-inner"></div>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="buttons">
+                            <div class="edit-btn" ng-click="goToEditPage()">Edit</div>
+                            <div class="delete-btn" ng-click="deleteBook()">Delete</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li ng-repeat="n in books.slice( 0, ( books.length - 1 ) / itemsPerPage + 1 ) track by $index" ng-class="{active: $index + 1 == currentPage}" ng-click="setPage( $index + 1 )" value="{{ $index + 1 }}">{{ $index + 1 }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="article" ng-show="activeBook">
+        <div class="image-container"><img class="image" src="images/empty.jpg"></div>
+        <div class="description-container">
+            <h1 class="book-title">{{ activeBook.author}} - {{ activeBook.title }}</h1>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" ng-model="activeBook.rating" ng-change="updateBook( 'rating' )"/><label for="star5"></label>
+                <input type="radio" id="star4" name="rating" value="4" ng-model="activeBook.rating" ng-change="updateBook( 'rating' )"/><label for="star4"></label>
+                <input type="radio" id="star3" name="rating" value="3" ng-model="activeBook.rating" ng-change="updateBook( 'rating' )"/><label for="star3"></label>
+                <input type="radio" id="star2" name="rating" value="2" ng-model="activeBook.rating" ng-change="updateBook( 'rating' )"/><label for="star2"></label>
+                <input type="radio" id="star1" name="rating" value="1" ng-model="activeBook.rating" ng-change="updateBook( 'rating' )"/><label for="star1"></label>
+            </div>
+            <p class="date">{{ activeBook.date | date : "dd, MMM yyyy"}}</p>
+            <p class="description">{{ activeBook.description }}</p>
+        </div>    
+        <div class="dlbutton-container">
+            <div class="download"><a href="{{ activeBook.file }}">download</a></div>
+        </div>
+    </div>
+</div> 

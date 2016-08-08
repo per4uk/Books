@@ -6,9 +6,9 @@ exports.getAllBooks = function ( req, res ) {
     console.log( 'get /books' );
     Book.find( {}, function ( err, books ) {
 
-      if ( err ) throw err;
+      if ( err ) res.send( err );
 
-      res.send( { books: books } );
+      res.send( books );
 
     });
     
@@ -65,7 +65,7 @@ exports.addBook = function ( req, res ) {
 
 exports.downloadBook =  function ( req, res ) {
 
-  var bookName = req.params.book;
+  var bookName = req.params.book_id;
   var file = __dirname + '/books/' + bookName;
   res.download( file );
 
@@ -75,14 +75,15 @@ exports.editBook = function ( req, res ) {
     
     var form = new formidable.IncomingForm();
     var bookData = {};
+    var id = req.params.book_id;
 
     form.on( 'fileBegin', function ( name, file ) {
 
-        file.path = __dirname + '/books/' + bookData.id + '.' + file.name.split('.').pop();
+        file.path = __dirname + '/books/' + id + '.' + file.name.split('.').pop();
 
     });
 
-    form.on('field', function( name, value ) {
+    form.on( 'field', function( name, value ) {
 
         bookData[ name ] = value;
 
@@ -90,18 +91,16 @@ exports.editBook = function ( req, res ) {
 
     form.on( 'file', function ( name, file ) {
 
-        bookData.file = '/download/' + bookData.id + '.' + file.name.split('.').pop();
+        bookData.file = '/download/' + id + '.' + file.name.split('.').pop();
         console.log('Uploaded ' + file.name);
 
     });
 
     form.on( 'end', function () {
 
-    	var id = bookData._id;
-    	delete bookData._id;console.log(id, bookData );
         Book.findByIdAndUpdate( id, bookData, function ( err ) {
 
-          if ( err ) throw err;
+          if ( err ) res.send( err );
 
           res.send();
           console.log('Book updated!');
@@ -110,19 +109,31 @@ exports.editBook = function ( req, res ) {
 
     });
 
-    form.parse( req );
-    
+    form.parse( req );    
     
 };
 
 exports.deleteBook = function ( req, res ) {
  
-    Book.findByIdAndRemove( req.body.id, function ( err ) {
+    Book.findByIdAndRemove( req.params.book_id, function ( err ) {
 
-      if ( err ) throw err;
+      if ( err ) res.send( err );
 
       res.send();
       console.log( 'Book deleted!' );
+
+    });
+    
+};
+
+exports.getBook = function ( req, res ) {
+ 
+    Book.findById( req.params.book_id, function ( err, book ) {
+
+      if ( err ) res.send( err );
+
+      res.send( book );
+      console.log( 'Book Finded!' );
 
     });
     

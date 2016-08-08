@@ -276,7 +276,6 @@ ul.pagination li:first-child {
 div.article {
     width: 700px;
     margin-top: 50px;
-    display: none;
 }
 
 div.article div.image-container {
@@ -409,9 +408,6 @@ div.article div.download a {
     text-decoration: none;
     width: 100%;
     height: 100%;
-}
-div.add-page, div.edit-page  {
-    display: none;
 }
 
 div.ae-page h1.page-title {

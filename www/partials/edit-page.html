@@ -1,0 +1,20 @@
+<div class="edit-page ae-page">
+    <h1 class="page-title">EDIT</h1>
+    <div class="fileUpload">
+        <span>replace file</span>
+        <input type="file" class="file" />
+    </div>
+    <input type="text" class="author" ng-model="editBook.author">
+    <input type="text" class="title" ng-model="editBook.title">
+    <textarea class="description" ng-model="editBook.description"></textarea>
+    <div class="status" ng-click="dd.toggle = !dd.toggle" ng-class="{ active: dd.toggle }">
+        <span class="text">{{dd.val}}</span>
+        <span class="background"></span>
+        <ul class="dropdown">
+            <li><a href="#" ng-click="dd.val = 'ON'">ON</a></li>
+            <li><a href="#" ng-click="dd.val = 'OFF'">OFF</a></li>
+        </ul>
+    </div>
+    <div class="cancel button" ng-click="reset()">cancel</div>
+    <div class="submit button" ng-click="updateBook()">submit</div>
+</div>
